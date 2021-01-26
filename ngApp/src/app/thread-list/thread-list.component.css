@@ -1,0 +1,40 @@
+.thread {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto max-content;
+    grid-template-areas: "thumbnail" "title" "description";
+}
+
+.thread__thumbnail {
+    grid-area: thumbnail;
+}
+
+.thread__cover {
+    width: 100%;
+    height: 10rem;
+    margin-top: 1rem;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 0 1px 4px var(--c-dark-s);
+}
+
+.thread__title {
+    margin-left: 1rem;
+}
+
+.thread__description {
+    margin-left: 1rem;
+}
+
+@media only screen and (min-width: 800px) {
+    .thread {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: 25% 1fr;
+        grid-template-rows: auto 1fr;
+        grid-template-areas:
+            "thumbnail        title"
+            "thumbnail  description";
+    }
+}

@@ -1,0 +1,37 @@
+<main class="single-screen-view">
+    <div class="card">
+        <div class="card__header">
+            <h1 class="card__title">Logowanie</h1>
+        </div>
+        <div class="card__body">
+            <form class="form" autocomplete="off">
+                <div class="form__group">
+                    <label for="email" class="form__label">Email</label>
+                    <input [(ngModel)]="loginUserData.email" #email="ngModel"
+                        [class.error]="email.dirty && email.invalid"
+                        pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+                        name="email" type="text" class="form__control" required>
+                    <small [class.collapsed]="email.valid || email.untouched || email.pristine"
+                            class="form__hint error">Nieprawidłowy email</small>
+                </div>
+                <div class="form__group">
+                    <label for="password" class="form__label">Hasło</label>
+                    <input [(ngModel)]="loginUserData.password" #password="ngModel"
+                        name="password" type="password" class="form__control" required>
+                </div>
+                <div class="dialog-error" *ngIf="error">
+                    <p>{{ error }}</p>
+                </div>
+                <button (click)="loginUser()" [disabled]="!email.valid || !password.valid"
+                    class="button action form__submit">
+                    Zaloguj
+                </button>
+                <p>
+                    Nie masz jeszcze konta?
+                    <a routerLink="/register" class="link">Zarejestruj się!</a>
+                </p>
+                <p><a routerLink="/" class="link">Przeglądaj jako gość</a></p>
+            </form>
+        </div>
+    </div>
+</main>

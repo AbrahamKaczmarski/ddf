@@ -1,0 +1,17 @@
+<main class="scrollable-view">
+    <div class="card card--single thread" *ngFor="let thread of threads">
+        <a [routerLink]="thread.identifier"
+            class="link thread__thumbnail">
+            <img [src]="thread.coverImage" [alt]="thread.coverImage"
+                class="thread__cover">
+        </a>
+        <h1 class="thread__title">{{ thread.name }}</h1>
+        <p class="thread__description">
+            {{ thread.description }}
+            <a [routerLink]="thread.identifier"
+                class="link">
+                Czytaj...
+            </a>
+        </p>
+    </div>
+</main>

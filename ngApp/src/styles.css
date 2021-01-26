@@ -1,0 +1,493 @@
+:root {
+    /* -- theme colors -- */
+    --c-light-ss: #887F88;
+    --c-light-s: #ACA5AC;
+    --c-light: #D0CCD0;
+    --c-light-l: #F2F1F2;
+    --c-light-ll: #FBFCFF;
+    --c-dark-ss:#332D2D;
+    --c-dark-s:#463E3C;
+    --c-dark: #605856;
+    --c-dark-l: #8D8280;
+    --c-dark-ll: #B1A8A7;
+    --c-action-s: #126C8D;
+    --c-action: #2080A4;
+    --c-action-l: #3EAFD9;
+    --c-action-ll: #c5f0ff;
+    --c-action-x: #23414B;
+    --c-error-s: #B03F1B;
+    --c-error: #CF5C38;
+    --c-error-l: #DE8F75;
+    --c-error-ll: #ffdfd4;
+    --c-error-x: #56382F;
+    --c-success-s: #08946D;
+    --c-success: #1CBA8C;
+    --c-success-l: #3AE2B0;
+    --c-success-ll: #c7fcec;
+    --c-success-x: #305C4F;
+    /* -- defaults -- */
+    --button-s: var(--c-dark-ss);
+    --button: var(--c-dark-s);
+    --button-l: var(--c-dark-ll);
+    --button-x: var(--c-dark-ss);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Texturina;
+    background-image: url('assets/img/textures/paper.jpg');
+    background-blend-mode: soft-light;
+}
+
+app-root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+router-outlet + * {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    padding: 1rem 0 2rem;
+}
+
+#website-footer {
+    height: 50vh;
+    background-image: url('./assets/img/header_bg.jpg');
+    background-size: cover;
+    background-position: bottom right;
+    background-attachment: fixed;
+    box-shadow: 0 -0.5rem 0.25rem var(--c-dark), 0 -1rem 0 var(--c-dark-s);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.handy {
+    position: fixed;
+    left: 2em;
+    bottom: 2em;
+}
+
+.handy:empty {
+    display: none;
+}
+
+/* # Color Schemes # */
+
+.primary-light {
+    background-color: var(--c-light);
+    color: var(--c-dark);
+    --c-card-base: var(--c-light-l);
+    --c-link: var(--c-action);
+    --c-link-active: var(--c-dark-ss);
+}
+
+.primary-dark {
+    background-color: var(--c-dark);
+    color: var(--c-light);
+    --c-card-base: var(--c-dark-s);
+    --c-link: var(--c-action-l);
+    --c-link-active: var(--c-light-ll);
+}
+
+.dialog-error {
+    color: var(--c-error-s);
+}
+
+.action {
+    --button-s: var(--c-action-s);
+    --button: var(--c-action);
+    --button-l: var(--c-action-l);
+    --button-x: var(--c-action-x);
+}
+
+.error {
+    --button-s: var(--c-error-s);
+    --button: var(--c-error);
+    --button-l: var(--c-error-l);
+    --button-x: var(--c-error-x);
+}
+
+.success {
+    --button-s: var(--c-success-s);
+    --button: var(--c-success);
+    --button-l: var(--c-success-l);
+    --button-x: var(--c-success-x);
+}
+
+/* # Layout # */
+
+/* = Views = */
+
+.scrollable-view {
+    flex: 1;
+    margin: 0 1em;
+}
+
+.single-screen-view {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* # Elements # */
+
+/* = Buttons = */
+
+.button {
+    width: 8em;
+    height: 3em;
+    padding-top: 0.25em;
+    background-color: var(--button);
+    border-radius: 6px;
+    border: none;
+    font-weight: bold;
+    color: var(--c-light-ll);
+    --active-bg: var(--button-l);
+    --disabled-bg: var(--button-x);
+}
+
+.button:active {
+    background-color: var(--active-bg);
+    border: none;
+    outline: none;
+}
+
+.button:focus {
+    border: none;
+    outline: none;
+}
+
+.button[disabled] {
+    background-color: var(--disabled-bg);
+    color:  var(--c-light-ss);
+}
+
+.button--small {
+    width: 3.25em;
+}
+
+.button--tiny {
+    width: 2em;
+}
+
+.button--fitting {
+    width: unset;
+    padding: 0.75em 2em 0.5em;
+}
+
+/* = Cards = */
+
+.card {
+    margin: 0.25em 0;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--c-card-base);
+    box-sizing: border-box;
+}
+
+.card--single {
+    padding: 1em 2em 1.5em;
+}
+
+.card__header {
+    padding-bottom: 0.5em;
+}
+
+/* = Forms = */
+
+form {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form__group {
+    margin: 0.5rem 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.form__label {
+    font-size: 1.25em;
+}
+
+.form__control {
+    margin-top: 0.25rem;
+    padding: 0 0.5em 0.25em;
+    border: none;
+    outline: none;
+    font-family: Texturina;
+    font-size: 1.5em;
+    color: var(--c-dark);
+}
+
+.form__control.error {
+    box-shadow: inset 0 -3px var(--c-error);
+}
+
+.form__control:focus {
+    box-shadow: inset 0 -3px var(--c-action);
+}
+
+.form__hint {
+    color: var(--button-s);
+}
+
+.form__submit {
+    align-self: flex-end;
+    margin: 1em 0;
+}
+
+/* = Inputs = */
+
+.input {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.input__field {
+    margin: 0.5rem 0;
+}
+
+.input__field > label {
+    font-size: 1.5em;
+}
+
+.input__control {
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 0.25rem;
+    padding: 0.25rem 1rem 0.5rem;
+    font-family: Texturina;
+    color: var(--c-dark);
+    border: none;
+    outline: none;
+}
+
+textarea.input__control {
+    resize: none;
+    white-space: pre-wrap;
+}
+
+.input__ui {
+    margin: 0.5rem 0;
+    align-self: flex-end;
+}
+
+/* = Links = */
+
+.link {
+    line-height: 0.5em;
+    text-decoration: none;
+    color: var(--c-link);
+    cursor: pointer;
+}
+
+.link:hover {
+    font-weight: bold;
+}
+
+.link:active, .link--active {
+    font-weight: bold;
+    color: var(--c-link-active);
+}
+
+/* = Logo = */
+
+.logo {
+    height: 2em;
+    margin-bottom: -1em;
+    transform: translate(0, -25%);
+}
+
+/* = Modal = */
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal--collapsed {
+    display: none;
+}
+
+/* = Navigation = */
+
+.navbar {
+    font-size: 1.25rem;
+}
+
+.navbar__nav {
+    width: 100%;
+    text-align: center;
+    list-style-type: none;
+}
+
+.navbar__item {
+    margin: 0.5em 0;
+}
+
+/* = Utility = */
+
+.filler {
+    flex: 1;
+}
+
+/* # ADMIN PANEL # */
+
+.mgmt {
+    display: flex;
+    flex-direction: column;
+}
+
+/* # USER MGMT # */
+
+.user__identification {
+    margin-bottom: 1em;
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.user__roles {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.user__role {
+    margin: 0.25rem 0;
+}
+
+.user__role > label {
+    margin-left: 0.5em;
+}
+
+/* # Behaviors # */
+
+.collapsed {
+    display: none;
+}
+
+.sticky {
+    display: block;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.r-10 {
+    border-radius: 10px;
+}
+
+.my-1em {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.my-1rem {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.font-bigger {
+    font-size: 1.25em;
+}
+
+.font-big {
+    font-size: 1.5em;
+}
+
+@media only screen and (min-width: 800px) {
+
+    /* # Layout # */
+
+    /* = Views = */
+
+    .scrollable-view {
+        width: 61.8vw;
+        margin: 0 auto;
+    }
+
+    /* # Components # */
+
+    /* = Navbar = */
+
+    .navbar {
+        font-size: 1.25rem;
+        padding: 0.5rem 1rem 0.75rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .navbar__nav {
+        width: fit-content;
+        display: flex;
+    }
+
+    .navbar__item {
+        margin: 0 1em;
+    }
+
+    .navbar--column {
+        width: 5em;
+        flex: 1;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar--column .navbar__nav {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* # ADMIN PANEL # */
+
+    .mgmt {
+        flex-direction: row;
+    }
+
+    .mgmt__nav {
+        width: 10em;
+        transition: width 400ms;
+        overflow: hidden;
+    }
+    
+    .mgmt__nav--collapsed {
+        width: 0;
+        padding-top: 1em;
+    }
+    
+    .mgmt_panel {
+        flex: 1;
+    }
+
+    /* # USER MGMT # */
+
+    .user {
+        display: flex;
+    }
+
+}

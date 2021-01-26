@@ -1,0 +1,19 @@
+<div class="mgmt">
+  <div class="mgmt__nav" [class.mgmt__nav--collapsed]="!showNav">
+    <nav class="navbar navbar--column">
+      <ul class="navbar__nav">
+        <li class="navbar__item">
+          <a routerLink="threads" routerLinkActive="link--active" class="link">Threads</a>
+        </li>
+        <li class="navbar__item">
+          <a routerLink="users" routerLinkActive="link--active" class="link">Users</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div class="mgmt_panel">
+
+    <router-outlet></router-outlet>
+
+  </div>
+</div>

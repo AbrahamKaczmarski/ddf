@@ -1,0 +1,77 @@
+<header class="primary-dark theme-header" *ngIf="displayBackground()">
+  <div class="theme__shortcuts primary-light card card--single r-10">
+    <h1 class="my-1rem">Skróty</h1>
+    <p>
+      <a routerLink="/threads" (click)="scrollDown()"
+        class="link">
+        Zobacz wątki
+      </a>
+    </p>
+    <p>
+      <a routerLink="/search" (click)="scrollDown()"
+        class="link">
+        Wyszukiwarka
+      </a>
+    </p>
+    <p *ngIf="hasRole('admin')">
+      <a  routerLink="/admin"
+        class="link">
+        Zarządzaj stroną
+      </a>
+    </p>
+  </div>
+  <div class="theme__invite primary-light card card--single r-10">
+    <div class="theme__logo"></div>
+    <h1 class="my-1rem">Witaj{{getUserName()}}!</h1>
+    <p *ngIf="!displayProfile()">
+      <a routerLink="/login" class="link">Zaloguj się</a>,
+      aby móc korzystać ze wszystkich funkcji serwisu.
+    </p>
+    <p *ngIf="!displayProfile()">
+      Nie masz jeszcze konta?
+      <a routerLink="/register" class="link">Zarejestruj się!</a>
+    </p>
+    <p *ngIf="displayProfile()">
+      Aktualności
+    </p>
+  </div>
+</header>
+<nav id="navbar" class="navbar primary-dark" *ngIf="displayUI()">
+  <ul class="navbar__nav">
+    <li class="navbar__item">
+      <a routerLink="/threads" class="link" (click)="scrollUp()">
+        <img src="../assets/img/dragon_og.png" alt="Home page" class="logo">
+      </a>
+    </li>
+    <li class="navbar__item">
+      <a routerLink="/search" routerLinkActive="link--active"class="link">Szukaj</a>
+    </li>
+    <li class="navbar__item" *ngIf="displayRoleUI('admin')">
+      <a routerLink="/admin" routerLinkActive="link--active" class="link">Admin</a>
+    </li>
+  </ul>
+  <ul class="navbar__nav">
+    <li class="navbar__item" *ngIf="!displayProfile()">
+      <a routerLink="/login" routerLinkActive="link--active" class="link">Zaloguj</a>
+    </li>
+    <li class="navbar__item" *ngIf="!displayProfile()">
+      <a routerLink="/register" routerLinkActive="link--active" class="link">Rejestracja</a>
+    </li>
+    <li class="navbar__item" *ngIf="displayProfile()">
+      <a routerLink="/profile" routerLinkActive="link--active" class="link">Profil</a>
+    </li>
+    <li class="navbar__item" *ngIf="displayProfile()">
+      <a class="link" (click)="logout()">Wyloguj</a>
+    </li>
+  </ul>
+</nav>
+
+<router-outlet></router-outlet>
+
+<footer id="website-footer" class="primary-dark" *ngIf="displayUI()">
+  <div class="footer__card">
+    <p>Abraham Kaczmarski</p>
+    <p>Łukasz Karwowski</p>
+    <p>2020</p>
+  </div>
+</footer>

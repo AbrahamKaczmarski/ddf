@@ -1,0 +1,37 @@
+<main class="scrollable-view">
+    <div *ngFor="let user of users"
+        class="card user" [class.collapsed]="hideUser(user)">
+        <div class="user__identification">
+            <h1 class="user__name">{{ user.name }}</h1>
+            <h2 class="user__email">{{ user.email }}</h2>
+        </div>
+        <div class="user__roles">
+            <div class="user__role">
+                <input [(ngModel)]="user.privileges.reader" (change)="checkUpdates(user)"
+                    type="checkbox" id="{{ user._id }}-reader">
+                <label for="{{ user._id }}-reader">Czytelnik</label>
+            </div>
+            <div class="user__role">
+                <input  [(ngModel)]="user.privileges.player" (change)="checkUpdates(user)"
+                    type="checkbox" id="{{ user._id }}-player">
+                <label for="{{ user._id }}-player">Gracz</label>
+            </div>
+            <div class="user__role">
+                <input  [(ngModel)]="user.privileges.gameMaster" (change)="checkUpdates(user)"
+                    type="checkbox" id="{{ user._id }}-gameMaster">
+                <label for="{{ user._id }}-gameMaster">Mistrz Gry</label>
+            </div>
+            <div class="user__role">
+                <input  [(ngModel)]="user.privileges.admin" (change)="checkUpdates(user)"
+                    type="checkbox" id="{{ user._id }}-admin">
+                <label for="{{ user._id }}-admin">Aministrator</label>
+            </div>
+        </div>
+    </div>
+    <div class="handy">
+        <input [(ngModel)]="userMask"
+            type="text" class="input__control my-1rem">
+        <button (click)="saveChanges()" *ngIf="needToSave()"
+            class="button action">Zapisz</button>
+    </div>
+</main>

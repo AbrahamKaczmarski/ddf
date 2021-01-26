@@ -1,0 +1,49 @@
+.post {
+    display: grid;
+    grid-template-columns: 1fr min-content;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+        " author       ui"
+        "content  content";
+}
+
+.post__author {
+    grid-area: author;
+    display: flex;
+    align-items: baseline;
+}
+
+.post__profile {
+    margin-left: 1em;
+}
+
+.post__content {
+    grid-area: content;
+}
+
+.post__ui {
+    grid-area: ui;
+}
+
+.page-nav {
+    display: grid;
+    margin: 1.25em 0;
+    grid-template-columns: 1fr 6em 1fr;
+    grid-template-areas: "previous active next";
+}
+
+.page__previous {
+    grid-area: previous;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.page__active {
+    grid-area: active;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.page__next {
+    grid-area: next;
+}

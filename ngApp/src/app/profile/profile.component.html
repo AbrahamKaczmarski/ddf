@@ -1,0 +1,46 @@
+<main class="single-screen-view">
+    <div *ngIf="profile"
+        class="profile">
+        <div class="profile__name">
+            <h1>{{profile.name}}</h1>
+            <button (click)="changeName()" *ngIf="!profileId"
+                class="button action profile__name-change">
+                Zmień
+            </button>
+        </div>
+        <h2 class="profile__email">{{profile.email}}</h2>
+        <p>
+            <a routerLink="/search/{{ profile._id }}"
+                class="link font-bigger">Pokaż posty</a>
+        </p>
+        <div class="profile__roles">
+            <p *ngFor="let role of profile.roles"
+                class="profile__role">
+                {{rolenames[role]}}
+            </p>
+        </div>
+    </div>
+    <div *ngIf="!profile">
+        <h1>Wskazany profil nie istnieje</h1>
+    </div>
+    <div (click)="modal.hide('modal-changeName')" *ngIf="!profileId"
+        id="modal-changeName" class="modal modal--collapsed">
+        <div (click)="modal.stopPropagation($event)"
+            class="primary-light card card--single r-10">
+            <form autocomplete="off" class="input">
+                <div class="input__field">
+                    <label for="newName">Wprowadź nową nazwę</label>
+                    <input [(ngModel)]="newName"
+                        type="text" id="confirm" name="newName"
+                        class="input__control">
+                </div>
+                <div class="input__ui">
+                    <button (click)="confirmNameChange()"
+                        class="button action">
+                        Zmień
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>

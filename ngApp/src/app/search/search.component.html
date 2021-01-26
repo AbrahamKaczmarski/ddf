@@ -1,0 +1,45 @@
+<main class="scrollable-view">
+    <div *ngIf="!profileId"
+        class="card card--single">
+        <h1>Wyszukiwanie postów</h1>
+        <form class="input" autocomplete="off">
+            <div class="input__field">
+                <label for="phrase">Wpisz czego szukasz</label>
+                <input [(ngModel)]="searchData.input"
+                    type="text" name="search-input"
+                    class="input__control" required>
+            </div>
+            <div class="input__field">
+                <label for="phrase">Gdzie szukać podanej frazy?</label>
+                <select [(ngModel)]="searchData.type"
+                    name="search-type" id="search-type"
+                    class="input__control">
+                    <option value="postContent">Treść wpisu</option>
+                    <option value="userData">Dane użytkownika</option>
+                </select>
+            </div>
+            <div class="input__ui">
+                <button (click)="search()"
+                    class="button action">Szukaj</button>
+            </div>
+        </form>
+    </div>
+    <div *ngIf="posts.length == 0"
+        class="card card--single my-1rem">
+        <h1>Brak treści do wyświetlenia</h1>
+    </div>
+    <div class="card post" *ngFor="let post of posts">
+        <div *ngIf="post.author" class="post__author">
+            <h1>{{post.author.name}}</h1>
+            <p class="post__profile">
+                <a routerLink="/profile/{{ post.authorId }}"
+                    class="link">
+                    Profil
+                </a>
+            </p>
+        </div>
+        <div class="post__content">
+            <p>{{post.content}}</p>
+        </div>
+    </div>
+</main>

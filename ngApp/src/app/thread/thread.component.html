@@ -1,0 +1,62 @@
+<main class="scrollable-view">
+    <h1>{{ threadTitle }}</h1>
+    <h1 *ngIf="posts.length == 0">Nie ma tu postów</h1>
+    <div class="card post" *ngFor="let post of posts">
+        <div class="post__author">
+            <h1>{{post.author.name}}</h1>
+            <p class="post__profile">
+                <a routerLink="/profile/{{ post.authorId }}"
+                    class="link">
+                    Profil
+                </a>
+            </p>
+        </div>
+        <div class="post__content">
+            <p>{{post.content}}</p>
+        </div>
+        <div class="post__ui">
+            <button (click)="deletePost(post._id)" *ngIf="hasRole('gameMaster')"
+                class="button button--small error">
+                X
+            </button>
+        </div>
+    </div>
+    <nav class="page-nav">
+        <div class="page__previous">
+            <button (click)="previousPage()" *ngIf="page > 1"
+                class="button action">
+                &lt;
+            </button>
+        </div>
+        <div class="page__active">
+            <p>{{ page }} / {{ pageLimit }}</p>
+        </div>
+        <div class="page__next">
+            <button (click)="nextPage()" *ngIf="page < pageLimit"
+                class="button action">
+                &gt;
+            </button>
+        </div>
+    </nav>
+    <div class="card new-post-form" *ngIf="hasRole('player')">
+        <div class="card__header">
+            <h1 class="card__title">Nowy post</h1>
+        </div>
+        <div class="card__body">
+            <form action="" class="input">
+                <div class="input__field">
+                    <label for="content">Treść</label>
+                    <textarea [(ngModel)]="newPostData.content"
+                        rows="6" name="content"
+                        class="input__control"></textarea>
+                </div>
+                <div class="input__ui">
+                    <button (click)="addPost()"
+                        class="button action">
+                        Dodaj
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>

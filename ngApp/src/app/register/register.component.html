@@ -1,0 +1,52 @@
+<main class="single-screen-view">
+    <div class="card">
+        <div class="card__header">
+            <h1 class="card__title">Rejestracja</h1>
+        </div>
+        <div class="card__body">
+            <form class="form" autocomplete="off">
+                <div class="form__group">
+                    <label for="email" class="form__label">Email</label>
+                    <input [(ngModel)]="registerUserData.email" #email="ngModel"
+                        [class.error]="email.dirty && email.invalid"
+                        pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+                        name="email" type="text" class="form__control" required>
+                    <small [class.collapsed]="email.valid || email.untouched || email.pristine"
+                            class="form__hint error">Nieprawidłowy email</small>
+                </div>
+                <div class="form__group">
+                    <label for="name" class="form__label">Nazwa użytkownika</label>
+                    <input [(ngModel)]="registerUserData.name" #userName="ngModel"
+                        [class.error]="userName.dirty && userName.invalid" minlength="3"
+                        name="name" type="text" class="form__control" required>
+                    <small [class.collapsed]="userName.valid || userName.untouched || userName.pristine"
+                        class="form__hint error">
+                        Minimalna długość nazwy użytkownika to 3
+                    </small>
+                </div>
+                <div class="form__group">
+                    <label for="password" class="form__label">Hasło</label>
+                    <input [(ngModel)]="registerUserData.password" #password="ngModel"
+                        [class.error]="password.dirty && password.invalid" minlength="6"
+                        name="password" type="password" class="form__control" required>
+                    <small [class.collapsed]="password.valid || password.untouched || password.pristine"
+                        class="form__hint error">
+                        Minimalna długość hasła to 6
+                    </small>
+                </div>
+                <div class="dialog-error" *ngIf="error">
+                    <p>{{ error }}</p>
+                </div>
+                <button (click)="registerUser()" [disabled]="!email.valid || !userName.valid || !password.valid"
+                    class="button action form__submit">
+                    Dołącz
+                </button>
+                <p>
+                    Masz już profil?
+                    <a routerLink="/login" class="link">Zaloguj się!</a>
+                </p>
+                <p><a routerLink="/" class="link">Przeglądaj jako gość</a></p>
+            </form>
+        </div>
+    </div>
+</main>

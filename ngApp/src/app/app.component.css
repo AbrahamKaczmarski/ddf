@@ -1,0 +1,54 @@
+.theme-header {
+    height: 100vh;
+    background-image: url('../assets/img/header_bg.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: right;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.theme__logo {
+    position: relative;
+    top: -12vw;
+    margin-bottom: -12vw;
+    width: 15vw;
+    height: 15vw;
+    background-image: url('../assets/img/dragon.png');
+    background-size: contain;
+}
+
+.theme__shortcuts {
+    width: 20vw;
+    min-width: 300px;
+    margin: 0 10vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.5em;
+    mix-blend-mode: hard-light;
+}
+
+.theme__invite {
+    width: 40vw;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    mix-blend-mode: hard-light;
+}
+
+.footer__card {
+    font-weight: bold;
+    mix-blend-mode: hard-light;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media only screen and (max-width: 800px) {
+    .theme-header {
+        display: none;
+    }
+}

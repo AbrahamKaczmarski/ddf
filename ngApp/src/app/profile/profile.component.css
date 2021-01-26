@@ -1,0 +1,36 @@
+.profile {
+    margin-top: 1.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile__name {
+    display: flex;
+}
+
+.profile__name-change {
+    position: relative;
+    top: 0.85em;
+    margin-left: 1em;
+    font-size: 0.75em;
+}
+
+.profile__roles {
+    margin-top: 2em;
+    text-align: center;
+}
+
+.profile__role {
+    margin: 1em;
+    font-weight: bold;
+}
+
+@media only screen and (min-width: 800px) {
+
+    .profile__roles {
+        display: flex;
+        margin-top: 2em;
+    }
+
+}

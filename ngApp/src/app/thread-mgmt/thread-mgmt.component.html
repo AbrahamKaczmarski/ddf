@@ -1,0 +1,119 @@
+<main class="scrollable-view">
+    <div *ngFor="let thread of threads"
+        class="card thread">
+        <h1 class="thread__title">{{ thread.name }}</h1>
+        <h2 class="thread__subtitle">{{ thread.identifier }}</h2>
+        <div class="thread__info">
+            <p>Posty: {{ thread.nPosts }}</p>
+        </div>
+        <div class="thread__edit thread__ui">
+            <button (click)="editThread(thread.identifier)"
+                class="button action">
+                Edytuj
+            </button>
+        </div>
+        <div class="thread__delete thread__ui">
+            <button (click)="deleteThread(thread.identifier)"
+                class="button error">
+                Usuń
+            </button>
+        </div>
+    </div>
+    <div class="card card--single">
+        <div class="card__header">
+            <h1 class="card__title">Nowy wątek</h1>
+        </div>
+        <div class="card__body">
+            <form autocomplete="off" class="input">
+                <div class="input__field">
+                    <label for="name">Nazwa</label>
+                    <input [(ngModel)]="newThreadData.name"
+                        name="name" type="text"
+                        class="input__control font-bigger" required>
+                </div>
+                <div class="input__field">
+                    <label for="coverImage">Okładka</label>
+                    <input [(ngModel)]="newThreadData.coverImage"
+                        name="coverImage" type="text"
+                        class="input__control font-bigger" required>
+                </div>
+                <div class="input__field">
+                    <label for="description">Opis</label>
+                    <textarea [(ngModel)]="newThreadData.description"
+                        rows="3" name="description"
+                        class="input__control" required></textarea>
+                </div>
+                <div class="input__ui">
+                    <button (click)="createThread()"
+                        class="button action">
+                        Dodaj
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div (click)="modal.hide('modal-edit')"
+        id="modal-edit" class="modal modal--collapsed">
+        <div (click)="modal.stopPropagation($event)"
+            class="primary-light card card--single r-10">
+            <div class="card__header">
+                <h1>Edytowanie wątku</h1>
+                <h2>{{ editThreadData.identifier }}</h2>
+            </div>
+            <div class="card__body">
+                <form autocomplete="off" class="input">
+                    <div class="input__field">
+                        <label for="editName">Nazwa</label>
+                        <input [(ngModel)]="editThreadData.name"
+                            name="editName" type="text"
+                            class="input__control font-bigger" required>
+                    </div>
+                    <div class="input__field">
+                        <label for="editCoverImage">Okładka</label>
+                        <input [(ngModel)]="editThreadData.coverImage"
+                            name="editCoverImage" type="text"
+                            class="input__control font-bigger" required>
+                    </div>
+                    <div class="input__field">
+                        <label for="editDescription">Opis</label>
+                        <textarea [(ngModel)]="editThreadData.description"
+                            rows="3" name="editDescription"
+                            class="input__control" required></textarea>
+                    </div>
+                    <div class="input__ui">
+                        <button (click)="applyChanges()"
+                            class="button action">
+                            Zmień
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div (click)="modal.hide('modal-delete')"
+        id="modal-delete" class="modal modal--collapsed">
+        <div (click)="modal.stopPropagation($event)"
+            class="primary-light card card--single r-10">
+            <div class="card__header">
+                <h1>Usuwanie wątku</h1>
+                <h2>{{ deleteThreadData.identifier }}</h2>
+            </div>
+            <div class="card__body">
+                <form autocomplete="off" class="input">
+                    <div class="input__field">
+                        <label for="confirmDelete">Podaj liczbę postów</label>
+                        <input [(ngModel)]="deleteThreadData.nPosts"
+                            type="text" id="confirm" name="confirmDelete"
+                            class="input__control">
+                    </div>
+                    <div class="input__ui">
+                        <button (click)="deleteChosenThread()"
+                            class="button error" [disabled]="!deletingConfirmed()">
+                            Usuń
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>

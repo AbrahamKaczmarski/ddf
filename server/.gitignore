@@ -1,0 +1,8 @@
+.vs
+.vscode
+
+.env
+
+node_modules/
+
+tests/
